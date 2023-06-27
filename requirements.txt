@@ -5,3 +5,4 @@ scikit-learn
 pip==23.1.2
 streamlit_option_menu
 matplotlib
+seaborn
