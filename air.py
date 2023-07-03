@@ -1595,7 +1595,7 @@ elif selected == "Informasi":
         <p>Dataset yang digunakan untuk machine learning mengenai kualitas air minum berasal dari berbagai PDAM dan perusahaan air minum di Indonesia. Dataset ini berisi informasi penting seperti pH, kekeruhan, kandungan zat kimia, dan mikroba dalam air minum. Pengumpulan data dari berbagai sumber ini memungkinkan analisis yang komprehensif dan prediksi yang akurat terkait kualitas air minum. Dengan memanfaatkan teknologi machine learning, diharapkan dapat ditemukan pola dan wawasan yang berharga untuk meningkatkan pengelolaan air minum serta menjaga kualitas air yang aman dan sehat bagi masyarakat Indonesia.</p>
     </div>
     ''', unsafe_allow_html=True)
-    st.image("simbol\petaku.png")
+    st.image("simbol\permenkes (2).png")
 
 
 
