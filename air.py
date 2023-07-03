@@ -1994,16 +1994,7 @@ if selected == "Credits":
         # membuat div untuk caption
         caption_div = st.empty()
         caption_div.markdown('**Dr. Meta Kalista, S.Si., M.Si.**<br><p style="margin-top:-10px;">Pembimbing 1</p>', unsafe_allow_html=True)
-
-        # menampilkan gambar LinkedIn dan teks di sebelah kanan
-        col1, col2 = st.columns([0.1, 1])  # Mengatur lebar kolom
-        
-        with col1:
-            st.image('simbol/linkedin.png', width=20)
-        with col2:
-            st.write("www.linkedin.com/in/syifamelindanafan")
-        
-        
+         
 
     with a2:
         image_div = st.empty()
@@ -2013,13 +2004,6 @@ if selected == "Credits":
         caption_div = st.empty()
         caption_div.markdown('**IG. Prasetya Dwi Wibawa, S.T., M.T.**<br><p style="margin-top:-10px;">Pembimbing 2</p>', unsafe_allow_html=True)
         
-        # menampilkan gambar LinkedIn dan teks di sebelah kanan
-        col1, col2 = st.columns([0.1, 1])  # Mengatur lebar kolom
-        
-        with col1:
-            st.image('simbol/linkedin.png', width=20)
-        with col2:
-            st.write("www.linkedin.com/in/syifamelindanafan")
         
         
 
