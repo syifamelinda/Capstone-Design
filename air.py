@@ -437,7 +437,7 @@ if selected == "Beranda":
             # Inisialisasi model klasifikasi berdasarkan pilihan metode
             if selected_method == "K-Nearest Neighbor":
                 clf = KNeighborsClassifier()
-                model_file = 'knn_FIX.sav'
+                model_file = 'K-Nearest Neighbors_FIX.sav'
             elif selected_method == "Decision Tree":
                 clf = tree.DecisionTreeClassifier()
                 model_file = 'DecisionTree_FIX.sav'
