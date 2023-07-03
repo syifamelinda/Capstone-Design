@@ -1074,7 +1074,7 @@ if selected == "Beranda":
         with b3:
             image_div = st.empty()
             st.write("")  # tambahkan baris kosong untuk jarak
-            st.image('simbol/pH.png', width=200, use_column_width=True)
+            st.image('simbol/ph.png', width=200, use_column_width=True)
 
             # membuat div untuk caption
             caption_div = st.empty()
