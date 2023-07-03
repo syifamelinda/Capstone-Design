@@ -331,7 +331,7 @@ if selected == "Beranda":
                 pass
 
             elif selected_method == "K-Nearest Neighbor":
-                with open("knn_FIX.sav", 'rb') as file:
+                with open("K-Nearest Neighbors_FIX.sav", 'rb') as file:
                     model_data = pickle.load(file)
 
                 kelayakan_model = model_data
