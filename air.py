@@ -310,7 +310,7 @@ if selected == "Beranda":
         if st.button('Cek Kelayakan'):
         # Perform prediction based on the selected method
             if selected_method == "Decision Tree":
-                with open("Decisiontree_FIX.sav", 'rb') as file:
+                with open("Decisiontree.sav", 'rb') as file:
                     model_data = pickle.load(file)
 
                 kelayakan_model = model_data
@@ -331,7 +331,7 @@ if selected == "Beranda":
                 pass
 
             elif selected_method == "K-Nearest Neighbor":
-                with open("K-Nearest Neighbors_FIX.sav", 'rb') as file:
+                with open("K-Nearest Neighbors.sav", 'rb') as file:
                     model_data = pickle.load(file)
 
                 kelayakan_model = model_data
@@ -437,10 +437,10 @@ if selected == "Beranda":
             # Inisialisasi model klasifikasi berdasarkan pilihan metode
             if selected_method == "K-Nearest Neighbor":
                 clf = KNeighborsClassifier()
-                model_file = 'K-Nearest Neighbors_FIX.sav'
+                model_file = 'K-Nearest Neighbors.sav'
             elif selected_method == "Decision Tree":
                 clf = tree.DecisionTreeClassifier()
-                model_file = 'DecisionTree_FIX.sav'
+                model_file = 'DecisionTree.sav'
             elif selected_method == "Extreme Learning Machine":
                 clf = MLPClassifier()
                 model_file = 'ELM-FRISKA_FIX.sav'
