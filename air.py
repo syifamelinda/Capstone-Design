@@ -310,7 +310,7 @@ if selected == "Beranda":
         if st.button('Cek Kelayakan'):
         # Perform prediction based on the selected method
             if selected_method == "Decision Tree":
-                with open('Decisiontree_FIX.sav', 'rb') as file:
+                with open("Decisiontree_FIX.sav", 'rb') as file:
                     model_data = pickle.load(file)
 
                 kelayakan_model = model_data
@@ -331,7 +331,7 @@ if selected == "Beranda":
                 pass
 
             elif selected_method == "K-Nearest Neighbor":
-                with open('knn_FIX.sav', 'rb') as file:
+                with open("knn_FIX.sav", 'rb') as file:
                     model_data = pickle.load(file)
 
                 kelayakan_model = model_data
