@@ -440,7 +440,7 @@ if selected == "Beranda":
                 model_file = 'K-Nearest Neighbors.sav'
             elif selected_method == "Decision Tree":
                 clf = tree.DecisionTreeClassifier()
-                model_file = 'DecisionTree.sav'
+                model_file = 'Decisiontree.sav'
             elif selected_method == "Extreme Learning Machine":
                 clf = MLPClassifier()
                 model_file = 'ELM-FRISKA_FIX.sav'
