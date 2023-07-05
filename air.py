@@ -622,8 +622,8 @@ if selected == "Beranda":
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df_cleaned['Potabilitas'] = np.where(df_cleaned['Potabilitas'] == 'Air Layak Minum', 1, 0)
             
-                # Ubah tipe data prediksi menjadi integer
-                y_pred = y_pred.astype(int)
+                # Mengambil kolom 'Potabilitas' yang sudah diubah menjadi 0 atau 1 sebagai label prediksi
+                y_pred = df_cleaned['Potabilitas']
             
                 accuracy = accuracy_score(y_true, y_pred)
             
@@ -658,6 +658,7 @@ if selected == "Beranda":
                     </a>
                 '''
                 st.markdown(button_html, unsafe_allow_html=True)
+
 
 
 
