@@ -639,10 +639,12 @@ if selected == "Beranda":
                 # Menggantikan nilai NaN dengan 0 pada Confusion Matrix
                 cm = np.nan_to_num(cm, nan=0)
             
-                fig, ax = plt.subplots(figsize=(4, 3))
-                sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-                plt.xlabel('Predicted Class')
-                plt.ylabel('True Class')
+                # Visualisasi Confusion Matrix menggunakan bar plot
+                labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
+                fig, ax = plt.subplots()
+                ax = sns.barplot(x=labels, y=cm[1], palette='Blues')
+                plt.xlabel('True Class')
+                plt.ylabel('Count')
                 plt.title('Confusion Matrix')
                 st.pyplot(fig)
             
