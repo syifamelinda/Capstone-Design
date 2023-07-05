@@ -445,11 +445,36 @@ if selected == "Beranda":
             # Display the updated result dataframe
             st.write(existing_data)
             
-            # Create download link
+            # Create download button
+            button_id = str(time.time())  # Unique ID for the button
+            button_label = 'Download CSV'
+            
+            # Generate CSV file and get its content as base64
             csv = existing_data.to_csv(index=False)
-            b64 = base64.b64encode(csv.encode()).decode()  # Encode CSV data as base64
-            href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Download CSV</a>'
-            st.markdown(href, unsafe_allow_html=True)
+            b64 = base64.b64encode(csv.encode()).decode()
+            
+            # Generate button CSS style
+            button_style = """
+                <style>
+                .download-button {
+                    background-color: #4CAF50;
+                    border: none;
+                    color: white;
+                    padding: 10px 20px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+                </style>
+            """
+            
+            # Display the download button
+            st.markdown(button_style, unsafe_allow_html=True)
+            st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
 
 
 
