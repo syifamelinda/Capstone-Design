@@ -471,10 +471,9 @@ if selected == "Beranda":
                 }
                 </style>
             """
-            
-            # Display the download button
-            st.markdown(button_style, unsafe_allow_html=True)
-            st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
+            # Display the download button in the sidebar
+            st.sidebar.markdown(button_style, unsafe_allow_html=True)
+            st.sidebar.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
 
 
 
