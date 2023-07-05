@@ -312,26 +312,27 @@ if selected == "Beranda":
             if selected_method == "Decision Tree":
                 with open("Decisiontree.sav", 'rb') as file:
                     model_data = pickle.load(file)
-
+            
                 kelayakan_model = model_data
-
+            
                 # Preprocess the input data
-                input_data = [EColli, Coliform, Arsen, Kromium, Kadmium ,Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa , TDS]
-
+                input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
+            
                 # Convert non-numeric fields to numeric values
                 input_data = [float(value) if isinstance(value, str) else value for value in input_data]
-
+            
                 # Perform the prediction using the Decision Tree model
-               air_prediction = kelayakan_model.predict([input_data])
-
-                if air_prediction[0] == 0:  # Sesuaikan kondisi berdasarkan label kelas model
+                air_prediction = kelayakan_model.predict([input_data])
+            
+                if air_prediction[0] == 0:  # Adjust based on the model's class label
                     air_diagnosis = 'Air Tidak Layak Minum'
                 else:
                     air_diagnosis = 'Air Layak Minum'
-                
+            
                 st.success(air_diagnosis)
                 # ...
                 pass
+
 
             elif selected_method == "K-Nearest Neighbor":
                 with open("K-Nearest Neighbors.sav", 'rb') as file:
