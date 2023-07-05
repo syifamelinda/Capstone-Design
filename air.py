@@ -457,15 +457,15 @@ if selected == "Beranda":
             button_style = """
                 <style>
                 .download-button {
-                    background-color: #4CAF50;
+                    background-color: #538cc6;
                     border: none;
                     color: white;
-                    padding: 10px 20px;
+                    padding: 8px 18px;
                     text-align: center;
                     text-decoration: none;
                     display: inline-block;
-                    font-size: 16px;
-                    margin: 4px 2px;
+                    font-size: 15px;
+                    margin: 3px 2px;
                     cursor: pointer;
                     border-radius: 4px;
                 }
