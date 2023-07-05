@@ -318,8 +318,11 @@ if selected == "Beranda":
                 # Preprocess the input data
                 input_data = [EColli, Coliform, Arsen, Kromium, Kadmium ,Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa , TDS]
 
-                # Perform the prediction using the Random Forest model
-                air_prediction = kelayakan_model.predict([input_data])
+                # Convert non-numeric fields to numeric values
+                input_data = [float(value) if isinstance(value, str) else value for value in input_data]
+
+                # Perform the prediction using the Decision Tree model
+               air_prediction = kelayakan_model.predict([input_data])
 
                 if air_prediction[0] == 0:  # Sesuaikan kondisi berdasarkan label kelas model
                     air_diagnosis = 'Air Tidak Layak Minum'
