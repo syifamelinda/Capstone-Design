@@ -418,8 +418,11 @@ if selected == "Beranda":
                 'Kekeruhan': Kekeruhan,
                 'Rasa': Rasa,
                 'TDS': TDS,
-                'Potabilitas': air_potability
             }
+            
+            # Add 'Potabilitas' key to the result dictionary if needed
+            if selected_method in ["Decision Tree", "K-Nearest Neighbor", "Extreme Learning Machine"]:
+                result['Potabilitas'] = air_diagnosis
             
             # Create a dataframe from the result dictionary
             df_result = pd.DataFrame([result])
@@ -428,7 +431,6 @@ if selected == "Beranda":
             df_result.to_csv('hasil_prediksi.csv', index=False)
             
             st.write(df_result)  # Display the result dataframe
-            # ...
 
 
 
