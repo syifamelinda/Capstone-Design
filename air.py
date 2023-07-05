@@ -327,6 +327,43 @@ if selected == "Beranda":
                     air_diagnosis = 'Air Layak Minum'
                 
                 st.success(air_diagnosis)
+                # Create a dictionary with the input data and prediction result
+            result = {
+                'EColli': EColli,
+                'Coliform': Coliform,
+                'Arsen': Arsen,
+                'Kromium': Kromium,
+                'Kadmium': Kadmium,
+                'Nitrat': Nitrat,
+                'Nitrit': Nitrit,
+                'Sianida': Sianida,
+                'Selenium': Selenium,
+                'Alumunium': Alumunium,
+                'Besi': Besi,
+                'Kesadahan': Kesadahan,
+                'Klorida': Klorida,
+                'Mangan': Mangan,
+                'pH': pH,
+                'Seng': Seng,
+                'Sulfat': Sulfat,
+                'Tembaga': Tembaga,
+                'Amonia': Amonia,
+                'Chlor': Chlor,
+                'Bau': Bau,
+                'Warna': Warna,
+                'Kekeruhan': Kekeruhan,
+                'Rasa': Rasa,
+                'TDS': TDS,
+                'Potabilitas': air_potability
+            }
+
+            # Create a dataframe from the result dictionary
+            df_result = pd.DataFrame([result])
+
+            # Save the dataframe to a CSV file
+            df_result.to_csv('hasil_prediksi.csv', index=False)
+
+            st.write(df_result)  # Display the result dataframe
                                 # ...
                 pass
 
