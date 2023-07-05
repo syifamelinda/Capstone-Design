@@ -612,34 +612,36 @@ if selected == "Beranda":
             if "Metrik Evaluasi" in option:
                 # Proses metrik evaluasi di sini
                 st.subheader("Metrik Evaluasi")
-                accuracy = accuracy_score(y, y_pred)
-
+                y_true = df['Potabilitas']  # Menggunakan kolom 'Potabilitas' sebagai label sebenarnya
+                accuracy = accuracy_score(y_true, y_pred)
+            
                 # Tampilkan akurasi menggunakan Streamlit
                 st.write("Akurasi:", accuracy)
-
+            
                 # Confusion Matrix
-                cm = confusion_matrix(y, y_pred)
+                cm = confusion_matrix(y_true, y_pred)
                 fig, ax = fig, ax = plt.subplots(figsize=(4, 3))
                 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
                 plt.xlabel('Predicted Class')
                 plt.ylabel('True Class')
                 plt.title('Confusion Matrix')
                 st.pyplot(fig)
-
+            
                 # Classification Report
-                report = classification_report(y, y_pred)
+                report = classification_report(y_true, y_pred)
                 st.subheader("Classification Report")
                 st.code(report, language='text')
             
-                with open('metrik evaluasi.pdf', 'rb') as f:
+                # Tombol download PDF
+                with open('metrik_evaluasi.pdf', 'rb') as f:
                     pdf_contents = f.read()
-
-                # mengonversi konten PDF ke dalam format Base64
+            
+                # Mengonversi konten PDF ke dalam format Base64
                 b64_pdf = base64.b64encode(pdf_contents).decode('utf-8')
-
-                # membuat tombol download PDF dan mengunduh file saat tombol diklik
+            
+                # Membuat tombol download PDF dan mengunduh file saat tombol diklik
                 button_html = f'''
-                    <a href="data:application/pdf;base64,{b64_pdf}" download="metrik evaluasi.pdf">
+                    <a href="data:application/pdf;base64,{b64_pdf}" download="metrik_evaluasi.pdf">
                         <button style="padding: 5px 10px; font-size: 12px; border: 0.2px solid black; background-color: #F63366; color: white; float: right;">Read Me</button>
                     </a>
                 '''
