@@ -460,20 +460,21 @@ if selected == "Beranda":
                     background-color: #4CAF50;
                     border: none;
                     color: white;
-                    padding: 8px 17px;
+                    padding: 10px 20px;
                     text-align: center;
                     text-decoration: none;
                     display: inline-block;
                     font-size: 16px;
-                    margin: 3px 2px;
+                    margin: 4px 2px;
                     cursor: pointer;
                     border-radius: 4px;
                 }
                 </style>
             """
-        # Display the download button
-        st.markdown(button_style, unsafe_allow_html=True)
-        st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
+            
+            # Display the download button
+            st.markdown(button_style, unsafe_allow_html=True)
+            st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
 
 
 
