@@ -365,7 +365,7 @@ if selected == "Beranda":
 
             st.write(df_result)  # Display the result dataframe
                                 # ...
-                pass
+              
 
             elif selected_method == "K-Nearest Neighbor":
                 with open("K-Nearest Neighbors.sav", 'rb') as file:
