@@ -612,8 +612,19 @@ if selected == "Beranda":
             if "Metrik Evaluasi" in option:
                 # Proses metrik evaluasi di sini
                 st.subheader("Metrik Evaluasi")
-                y_true = df['Potabilitas'].astype(int)  # Menggunakan kolom 'Potabilitas' sebagai label sebenarnya
-                y_pred = y_pred.astype(int)  # Mengubah tipe data prediksi menjadi integer
+            
+                # Menghapus baris dengan nilai NaN pada kolom 'Potabilitas'
+                df_cleaned = df.dropna(subset=['Potabilitas'])
+            
+                # Menggunakan kolom 'Potabilitas' yang sudah dibersihkan sebagai label sebenarnya
+                y_true = df_cleaned['Potabilitas'].astype(int)
+            
+                # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
+                df_cleaned['Potabilitas'] = np.where(df_cleaned['Potabilitas'] == 'Air Layak Minum', 1, 0)
+            
+                # Ubah tipe data prediksi menjadi integer
+                y_pred = y_pred.astype(int)
+            
                 accuracy = accuracy_score(y_true, y_pred)
             
                 # Tampilkan akurasi menggunakan Streamlit
@@ -647,6 +658,7 @@ if selected == "Beranda":
                     </a>
                 '''
                 st.markdown(button_html, unsafe_allow_html=True)
+
 
 
                                 
