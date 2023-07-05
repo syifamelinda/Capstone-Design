@@ -444,6 +444,12 @@ if selected == "Beranda":
             
             # Display the updated result dataframe
             st.write(existing_data)
+            
+            # Create download link
+            csv = existing_data.to_csv(index=False)
+            b64 = base64.b64encode(csv.encode()).decode()  # Encode CSV data as base64
+            href = f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv">Download CSV</a>'
+            st.markdown(href, unsafe_allow_html=True)
 
 
 
