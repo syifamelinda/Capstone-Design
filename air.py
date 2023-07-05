@@ -312,30 +312,30 @@ if selected == "Beranda":
             if selected_method == "Decision Tree":
                 with open("Decisiontree.sav", 'rb') as file:
                     model_data = pickle.load(file)
-                
+        
                 kelayakan_model = model_data
-                
-                # Preprocessing data input
+        
+                # Preprocess the input data
                 input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
-                
-                # Mengubah kolom non-numerik menjadi nilai numerik dan menangani string kosong
-                input_data = [float(value) if (isinstance(value, str) and value.strip()) else value for value in input_data]
-                
-                # Memeriksa apakah terdapat nilai kosong atau string kosong
-                if any(value == '' for value in input_data):
-                    st.error("Silakan berikan nilai numerik yang valid untuk semua fitur input.")
+        
+                # Convert non-numeric fields to numeric values
+                input_data = [float(value) if isinstance(value, str) else value for value in input_data]
+        
+                # Perform scaling on the input data
+                scaler = StandardScaler()
+                input_data_scaled = scaler.fit_transform([input_data])
+        
+                # Make predictions
+                air_prediction = model_data.predict(input_data_scaled)
+        
+                if air_prediction[0] == 0:
+                    air_diagnosis = 'Air Layak Minum'
                 else:
-                    # Melakukan prediksi menggunakan model Decision Tree
-                    air_prediction = kelayakan_model.predict([input_data])
-                
-                    if air_prediction[0] == 0:  # Sesuaikan berdasarkan label kelas model
-                        air_diagnosis = 'Air Tidak Layak Minum'
-                    else:
-                        air_diagnosis = 'Air Layak Minum'
-                
-                    st.success(air_diagnosis)
-                    # ...
-                    pass
+                    air_diagnosis = 'Air Tidak Layak Minum'
+        
+                st.success(air_diagnosis)
+                # ...
+                pass
             
             elif selected_method == "K-Nearest Neighbor":
                 with open("K-Nearest Neighbors.sav", 'rb') as file:
