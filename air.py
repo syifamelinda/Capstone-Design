@@ -308,59 +308,59 @@ if selected == "Beranda":
             st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
         
         if st.button('Cek Kelayakan'):
-        # Perform prediction based on the selected method
+            # Perform prediction based on the selected method
             if selected_method == "Decision Tree":
                 with open("Decisiontree.sav", 'rb') as file:
                     model_data = pickle.load(file)
-            
+                
                 kelayakan_model = model_data
-            
+                
                 # Preprocessing data input
                 input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
-            
+                
                 # Mengubah kolom non-numerik menjadi nilai numerik dan menangani string kosong
                 input_data = [float(value) if (isinstance(value, str) and value.strip()) else value for value in input_data]
-            
+                
                 # Memeriksa apakah terdapat nilai kosong atau string kosong
                 if any(value == '' for value in input_data):
                     st.error("Silakan berikan nilai numerik yang valid untuk semua fitur input.")
                 else:
                     # Melakukan prediksi menggunakan model Decision Tree
                     air_prediction = kelayakan_model.predict([input_data])
-            
+                
                     if air_prediction[0] == 0:  # Sesuaikan berdasarkan label kelas model
                         air_diagnosis = 'Air Tidak Layak Minum'
                     else:
                         air_diagnosis = 'Air Layak Minum'
-            
+                
                     st.success(air_diagnosis)
                     # ...
                     pass
-
+            
             elif selected_method == "K-Nearest Neighbor":
                 with open("K-Nearest Neighbors.sav", 'rb') as file:
                     model_data = pickle.load(file)
-
+        
                 kelayakan_model = model_data
-
+        
                 # Preprocess the input data
-                input_data = [EColli, Coliform, Arsen, Kromium, Kadmium , Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa , TDS]
-
+                input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
+        
                 # Convert non-numeric fields to numeric values
                 input_data = [float(value) if isinstance(value, str) else value for value in input_data]
-
+        
                 # Perform scaling on the input data
                 scaler = StandardScaler()
                 input_data_scaled = scaler.fit_transform([input_data])
-
+        
                 # Make predictions
                 air_prediction = model_data.predict(input_data_scaled)
-
+        
                 if air_prediction[0] == 0:
                     air_diagnosis = 'Air Layak Minum'
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
-
+        
                 st.success(air_diagnosis)
                 # ...
                 pass
@@ -370,18 +370,18 @@ if selected == "Beranda":
                 
                 with open('ELM-FRISKA_FIX.sav', 'rb') as file:
                     model_data = pickle.load(file)
-
+        
                 kelayakan_model = model_data
-
+        
                 # Preprocess the input data
                 input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
-
+        
                 # Convert input data to numpy array and reshape
                 input_data = np.array(input_data).reshape(1, -1)
-
+        
                 # Perform the prediction using the Extreme Learning Machine model
                 air_prediction = kelayakan_model.predict(input_data)
-
+        
                 if air_prediction[0] == 1:  # Sesuaikan kondisi berdasarkan label kelas model
                     air_diagnosis = 'Air Layak Minum'
                 else:
@@ -390,6 +390,7 @@ if selected == "Beranda":
                 st.success(air_diagnosis)
                 # ...
                 pass
+        
             # Create a dictionary with the input data and prediction result
             result = {
                 'EColli': EColli,
@@ -419,16 +420,16 @@ if selected == "Beranda":
                 'TDS': TDS,
                 'Potabilitas': air_potability
             }
-        
+            
             # Create a dataframe from the result dictionary
             df_result = pd.DataFrame([result])
-        
+            
             # Save the dataframe to a CSV file
             df_result.to_csv('hasil_prediksi.csv', index=False)
-        
+            
             st.write(df_result)  # Display the result dataframe
             # ...
-                
+
 
 
 
