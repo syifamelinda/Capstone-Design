@@ -642,7 +642,7 @@ if selected == "Beranda":
                 # Visualisasi Confusion Matrix menggunakan bar plot
                 labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
                 fig, ax = plt.subplots()
-                ax = sns.barplot(x=labels, y=cm[1], palette='Blues')
+                ax = sns.barplot(x=labels, y=cm[0], palette='Blues')
                 plt.xlabel('True Class')
                 plt.ylabel('Count')
                 plt.title('Confusion Matrix')
