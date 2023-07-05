@@ -422,7 +422,10 @@ if selected == "Beranda":
             
             # Add 'Potabilitas' key to the result dictionary if needed
             if selected_method in ["Decision Tree", "K-Nearest Neighbor", "Extreme Learning Machine"]:
-                result['Potabilitas'] = air_diagnosis
+                if air_diagnosis == 'Air Layak Minum':
+                    result['Potabilitas'] = 1
+                else:
+                    result['Potabilitas'] = 0
             
             # Create a dataframe from the result dictionary
             df_result = pd.DataFrame([result])
