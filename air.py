@@ -622,6 +622,9 @@ if selected == "Beranda":
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df_cleaned['Potabilitas'] = np.where(df_cleaned['Potabilitas'] == 'Air Layak Minum', 1, 0)
             
+                # Menggantikan nilai NaN dengan 0 pada kolom 'Potabilitas'
+                df_cleaned['Potabilitas'] = df_cleaned['Potabilitas'].fillna(0)
+            
                 # Mengambil kolom 'Potabilitas' yang sudah diubah menjadi 0 atau 1 sebagai label prediksi
                 y_pred = df_cleaned['Potabilitas']
             
@@ -633,7 +636,7 @@ if selected == "Beranda":
                 # Confusion Matrix
                 cm = confusion_matrix(y_true, y_pred)
             
-                # Ganti nilai NaN dengan 0 pada Confusion Matrix
+                # Menggantikan nilai NaN dengan 0 pada Confusion Matrix
                 cm = np.nan_to_num(cm, nan=0)
             
                 fig, ax = plt.subplots(figsize=(4, 3))
@@ -662,6 +665,7 @@ if selected == "Beranda":
                     </a>
                 '''
                 st.markdown(button_html, unsafe_allow_html=True)
+
 
 
 
