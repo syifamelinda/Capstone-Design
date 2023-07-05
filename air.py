@@ -612,7 +612,8 @@ if selected == "Beranda":
             if "Metrik Evaluasi" in option:
                 # Proses metrik evaluasi di sini
                 st.subheader("Metrik Evaluasi")
-                y_true = df['Potabilitas']  # Menggunakan kolom 'Potabilitas' sebagai label sebenarnya
+                y_true = df['Potabilitas'].astype(int)  # Menggunakan kolom 'Potabilitas' sebagai label sebenarnya
+                y_pred = y_pred.astype(int)  # Mengubah tipe data prediksi menjadi integer
                 accuracy = accuracy_score(y_true, y_pred)
             
                 # Tampilkan akurasi menggunakan Streamlit
@@ -646,6 +647,7 @@ if selected == "Beranda":
                     </a>
                 '''
                 st.markdown(button_html, unsafe_allow_html=True)
+
 
                                 
 
