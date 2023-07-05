@@ -634,7 +634,7 @@ if selected == "Beranda":
                 cm = confusion_matrix(y_true, y_pred)
             
                 # Ganti nilai NaN dengan 0 pada Confusion Matrix
-                cm = np.nan_to_num(cm)
+                cm = np.nan_to_num(cm, nan=0)
             
                 fig, ax = plt.subplots(figsize=(4, 3))
                 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
