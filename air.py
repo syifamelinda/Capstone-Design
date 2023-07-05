@@ -430,10 +430,21 @@ if selected == "Beranda":
             # Create a dataframe from the result dictionary
             df_result = pd.DataFrame([result])
             
-            # Save the dataframe to a CSV file
-            df_result.to_csv('hasil_prediksi.csv', index=False)
+            # Load existing data from CSV file
+            try:
+                existing_data = pd.read_csv('hasil_prediksi.csv')
+            except FileNotFoundError:
+                existing_data = pd.DataFrame()
             
-            st.write(df_result)  # Display the result dataframe
+            # Append new data to existing data
+            existing_data = existing_data.append(df_result, ignore_index=True)
+            
+            # Save the combined data to CSV file
+            existing_data.to_csv('hasil_prediksi.csv', index=False)
+            
+            # Display the updated result dataframe
+            st.write(existing_data)
+
 
 
 
