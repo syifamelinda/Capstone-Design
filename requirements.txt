@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 numpy==1.24.2
 pandas==1.5.3
 streamlit
@@ -8,11 +8,10 @@ streamlit_option_menu
 matplotlib
 seaborn
 joblib==1.2.0
-=======
+
 numpy==1.24.2
 pandas==1.5.3
 streamlit
 pickle
 scikit-learn
 pip==23.1.2
->>>>>>> Stashed changes
