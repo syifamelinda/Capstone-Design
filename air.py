@@ -562,7 +562,7 @@ if selected == "Beranda":
 
             if "Hasil Klasifikasi" in option:
                 # Proses hasil klasifikasi di sini
-                # Proses hasil klasifikasi di sini
+                # Proses hasil klasifikasi di sini 
                 st.subheader("Hasil Klasifikasi")
             
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
