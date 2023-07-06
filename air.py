@@ -507,26 +507,26 @@ if selected == "Beranda":
     elif input_option == "Upload File":
         # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
-
+    
         if uploaded_file is not None:
             # Baca dataset dari file CSV
             df = pd.read_csv(uploaded_file)
-
+    
             # Preprocessing data
             df['Potabilitas'] = df['Potabilitas'].astype('category')  # Ubah tipe data kolom Potabilitas menjadi category
-
+    
             # Label Encoder untuk kolom Rasa dan Bau
             label_encoder = LabelEncoder()
             df['Rasa '] = label_encoder.fit_transform(df['Rasa '])
             df['Bau'] = label_encoder.fit_transform(df['Bau'])
-
+    
             # Drop kolom BOD5, COD, dan Suhu
             df = df.drop(['BOD5', 'COD', 'Suhu'], axis=1)
-
+    
             # Bagi data menjadi fitur (X) dan label (y)
             X = df.iloc[:, :-1]
             y = df.iloc[:, -1]
-
+    
             # Inisialisasi model klasifikasi berdasarkan pilihan metode
             if selected_method == "K-Nearest Neighbor":
                 clf = KNeighborsClassifier()
@@ -537,160 +537,79 @@ if selected == "Beranda":
             elif selected_method == "Extreme Learning Machine":
                 clf = MLPClassifier()
                 model_file = 'ELM-FRISKA_FIX.sav'
-
+    
             # Load model yang sudah disimpan sebelumnya
             model = joblib.load(model_file)
-
+    
             # Prediksi label untuk data yang baru diunggah
             y_pred = model.predict(X)
-
+    
             # Tampilkan dataset setelah preprocessing
             st.write(df)
-
-
-            # Membuat pilihan parameter menggunakan st.selectbox
-            parameter = st.selectbox('Select Parameter', options=df.columns)
-
-            # Menampilkan histogram
-            plt.figure()
-            plt.hist(df[parameter], bins='auto', color='#7AB8BF', rwidth=0.8)
-            plt.xlabel(parameter)
-            plt.ylabel('Frequency')
-            plt.title(f'Histogram of {parameter}')
-            st.pyplot(plt)
-
-            # Tampilkan pilihan opsi
-            option = st.multiselect(
-                label="Validasi Hasil Klasifikasi Kamu Ada Disini Yuk Cek !!",
-                options=("Hasil Klasifikasi", "Metrik Evaluasi")
-            )
-
-            if "Hasil Klasifikasi" in option:
-                # Proses hasil klasifikasi di sini
-                st.subheader("Hasil Klasifikasi")
-            
-                # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
-                df['Potabilitas'] = np.where(df['Potabilitas'] == 'Air Layak Minum', 1, 0)
-
-                # Tampilkan keseluruhan dataset dengan label Potabilitas
-                st.dataframe(df)
-                
-                # Menghitung jumlah kelayakan
-                class_counts = df['Potabilitas'].value_counts()
-            
-                # Membuat label untuk grafik batang
-                labels = ['Tidak Layak', 'Layak']
-            
-                # Filter dataframe berdasarkan hasil klasifikasi
-                df_filtered = df[df['Potabilitas'] == 1] if 1 in class_counts.index else df[df['Potabilitas'] == 0]
-            
-                # Menghitung jumlah kelayakan yang sesuai dengan hasil klasifikasi
-                class_counts_filtered = df_filtered['Potabilitas'].value_counts()
-
-                # Definisi warna untuk setiap bar
-                colors = ['#336B87', '#f63366']
-                
-                # Tampilkan grafik batang
-                fig, ax = plt.subplots()
-                ax.bar(labels, class_counts_filtered, color=colors)
-            
-                ax.set_xlabel('Kelayakan')
-                ax.set_ylabel('Jumlah')
-                ax.set_title('Hasil Klasifikasi')
-                st.pyplot(fig)
-            
-                # Tampilkan keseluruhan dataset dengan label Potabilitas
-                #st.dataframe(df)
-            
-                # Tombol download
-                def download_csv():
-                    csv = df.to_csv(index=False)
-                    b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
-                    href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
-                    st.markdown(href, unsafe_allow_html=True)
-
-
-
-
-
-
-                
-                st.write("")
-                st.write("")
-                col1, col2 = st.columns([2, 1])
-                with col1:
-                    st.write("")
-                with col2:
-                    download_csv()
-
-            if "Metrik Evaluasi" in option:
-                # Proses metrik evaluasi di sini
-                st.subheader("Metrik Evaluasi")
-            
-                # Menghapus baris dengan nilai NaN pada kolom 'Potabilitas'
-                df_cleaned = df.dropna(subset=['Potabilitas'])
-            
-                # Menggunakan kolom 'Potabilitas' yang sudah dibersihkan sebagai label sebenarnya
-                y_true = df_cleaned['Potabilitas'].astype(int)
-            
-                # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
-                df_cleaned['Potabilitas'] = np.where(df_cleaned['Potabilitas'] == 'Air Layak Minum', 1, 0)
-            
-                # Menggantikan nilai NaN dengan 0 pada kolom 'Potabilitas'
-                df_cleaned['Potabilitas'] = df_cleaned['Potabilitas'].fillna(0)
-            
-                # Mengambil kolom 'Potabilitas' yang sudah diubah menjadi 0 atau 1 sebagai label prediksi
-                y_pred = df_cleaned['Potabilitas']
-            
-                accuracy = accuracy_score(y_true, y_pred)
-            
-                # Tampilkan akurasi menggunakan Streamlit
-                st.write("Akurasi:", accuracy)
-            
-                # Confusion Matrix
-                cm = confusion_matrix(y_true, y_pred)
-            
-                # Menggantikan nilai NaN dengan 0 pada Confusion Matrix
-                cm = np.nan_to_num(cm, nan=0)
-            
-                # Visualisasi Confusion Matrix menggunakan bar plot
-                labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
-                fig, ax = plt.subplots()
-                ax = sns.barplot(x=labels, y=cm[0], palette='Blues')
-                plt.xlabel('True Class')
-                plt.ylabel('Count')
-                plt.title('Confusion Matrix')
-                st.pyplot(fig)
-            
-                # Classification Report
-                report = classification_report(y_true, y_pred)
-                st.subheader("Classification Report")
-                st.code(report, language='text')
-            
-                # Tombol download PDF
-                with open('metrik_evaluasi.pdf', 'rb') as f:
-                    pdf_contents = f.read()
-            
-                # Mengonversi konten PDF ke dalam format Base64
-                b64_pdf = base64.b64encode(pdf_contents).decode('utf-8')
-            
-                # Membuat tombol download PDF dan mengunduh file saat tombol diklik
-                button_html = f'''
-                    <a href="data:application/pdf;base64,{b64_pdf}" download="metrik_evaluasi.pdf">
-                        <button style="padding: 5px 10px; font-size: 12px; border: 0.2px solid black; background-color: #F63366; color: white; float: right;">Read Me</button>
-                    </a>
-                '''
-                st.markdown(button_html, unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-                                
-
+    
+            # Mengubah hasil prediksi menjadi label Potabilitas
+            potabilitas_pred = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
+    
+            # Tambahkan kolom Potabilitas ke dataframe
+            df['Potabilitas'] = potabilitas_pred
+    
+            # Tampilkan hasil klasifikasi dengan kolom Potabilitas
+            st.dataframe(df)
+    
+            # Tampilkan grafik batang berdasarkan hasil klasifikasi
+            class_counts = df['Potabilitas'].value_counts()
+            labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
+            colors = ['#f63366', '#336B87']
+            fig, ax = plt.subplots()
+            ax.bar(labels, class_counts, color=colors)
+            ax.set_xlabel('Kelayakan')
+            ax.set_ylabel('Jumlah')
+            ax.set_title('Hasil Klasifikasi')
+            st.pyplot(fig)
+    
+            # Simpan hasil klasifikasi ke file CSV
+            df.to_csv('hasil_klasifikasi.csv', index=False)
+    
+            # Buat tombol download
+            button_id = str(time.time())  # Unique ID for the button
+            button_label = 'Download Hasil Klasifikasi'
+    
+            # Generate CSV file and get its content as base64
+            csv = df.to_csv(index=False)
+            b64 = base64.b64encode(csv.encode()).decode()
+    
+            # Generate button CSS style
+            button_style = """
+                <style>
+                .download-button {
+                    background-color: #538cc6;
+                    border: none;
+                    color: white;
+                    padding: 8px 18px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 15px;
+                    margin: 3px 2px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+                </style>
+            """
+    
+            # Display the download button
+            st.markdown(button_style, unsafe_allow_html=True)
+            st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
+    
+    
+    
+    
+    
+    
+    
+    
+                                    
+    
 
 
 
