@@ -376,20 +376,25 @@ if selected == "Beranda":
                 # Preprocess the input data
                 input_data = [EColli, Coliform, Arsen, Kromium, Kadmium, Nitrat, Nitrit, Sianida, Selenium, Alumunium, Besi, Kesadahan, Klorida, Mangan, pH, Seng, Sulfat, Tembaga, Amonia, Chlor, Bau, Warna, Kekeruhan, Rasa, TDS]
         
-                # Convert input data to numpy array and reshape
-                input_data = np.array(input_data).reshape(1, -1)
+                # Convert non-numeric fields to numeric values
+                input_data = [float(value) if isinstance(value, str) else value for value in input_data]
         
-                # Perform the prediction using the Extreme Learning Machine model
-                air_prediction = kelayakan_model.predict(input_data)
+                # Perform scaling on the input data
+                scaler = StandardScaler()
+                input_data_scaled = scaler.fit_transform([input_data])
         
-                if air_prediction[0] == 1:  # Sesuaikan kondisi berdasarkan label kelas model
+                # Make predictions
+                air_prediction = model_data.predict(input_data_scaled)
+        
+                if air_prediction[0] == 0:
                     air_diagnosis = 'Air Layak Minum'
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
-                    
+        
                 st.success(air_diagnosis)
                 # ...
                 pass
+            
         
             # Create a dictionary with the input data and prediction result
             result = {
