@@ -507,26 +507,26 @@ if selected == "Beranda":
     elif input_option == "Upload File":
         # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
-
+    
         if uploaded_file is not None:
             # Baca dataset dari file CSV
             df = pd.read_csv(uploaded_file)
-
+    
             # Preprocessing data
             df['Potabilitas'] = df['Potabilitas'].astype('category')  # Ubah tipe data kolom Potabilitas menjadi category
-
+    
             # Label Encoder untuk kolom Rasa dan Bau
             label_encoder = LabelEncoder()
             df['Rasa '] = label_encoder.fit_transform(df['Rasa '])
             df['Bau'] = label_encoder.fit_transform(df['Bau'])
-
+    
             # Drop kolom BOD5, COD, dan Suhu
             df = df.drop(['BOD5', 'COD', 'Suhu'], axis=1)
-
+    
             # Bagi data menjadi fitur (X) dan label (y)
             X = df.iloc[:, :-1]
             y = df.iloc[:, -1]
-
+    
             # Inisialisasi model klasifikasi berdasarkan pilihan metode
             if selected_method == "K-Nearest Neighbor":
                 clf = KNeighborsClassifier()
@@ -537,62 +537,31 @@ if selected == "Beranda":
             elif selected_method == "Extreme Learning Machine":
                 clf = MLPClassifier()
                 model_file = 'ELM-FRISKA_FIX.sav'
-
+    
             # Load model yang sudah disimpan sebelumnya
             model = joblib.load(model_file)
-
+    
             # Prediksi label untuk data yang baru diunggah
             y_pred = model.predict(X)
-
+    
             # Tampilkan dataset setelah preprocessing
             st.write(df)
-
-
-            # Membuat pilihan parameter menggunakan st.selectbox
-            parameter = st.selectbox('Select Parameter', options=df.columns)
-
-            # Menampilkan histogram
-            plt.figure()
-            plt.hist(df[parameter], bins='auto', color='#7AB8BF', rwidth=0.8)
-            plt.xlabel(parameter)
-            plt.ylabel('Frequency')
-            plt.title(f'Histogram of {parameter}')
-            st.pyplot(plt)
-
-            # Tampilkan pilihan opsi
-            option = st.multiselect(
-                label="Validasi Hasil Klasifikasi Kamu Ada Disini Yuk Cek !!",
-                options=("Hasil Klasifikasi", "Metrik Evaluasi")
-            )
-
-            if "Hasil Klasifikasi" in option:
-                # Proses hasil klasifikasi di sini
-                st.subheader("Hasil Klasifikasi")
-                df_pred = pd.DataFrame({'Kelayakan': y_pred})
-
-                # Tampilkan grafik batang
-                fig, ax = plt.subplots()
-                class_counts = np.bincount(y_pred)
-                labels = ['0 = Tidak Layak', '1 = Layak']
-
-                # Atur warna untuk setiap bar
-                colors = ['#336B87', '#f63366']
-                ax.bar(labels, class_counts, color=colors)
-
-                ax.set_xlabel('Kelayakan')
-                ax.set_ylabel('Jumlah')
-                ax.set_title('Hasil Klasifikasi')
-                st.pyplot(fig)
-
-                # Tampilkan keseluruhan dataset
-                st.dataframe(df)
-
-                # Tombol download
-                def download_csv():
-                    csv = df.to_csv(index=False)
-                    b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
-                    href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
-                    st.markdown(href, unsafe_allow_html=True)
+    
+            # Tambahkan kolom "Potabilitas" ke data frame
+            df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
+    
+            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
+            st.subheader("Hasil Klasifikasi")
+            st.dataframe(df)
+    
+            # Tombol download
+            def download_csv():
+                csv = df.to_csv(index=False)
+                b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
+                href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
+                st.markdown(href, unsafe_allow_html=True)
+    
+            download_csv()
 
         
     
