@@ -572,15 +572,7 @@ if selected == "Beranda":
             potabilitas_counts = df['Potabilitas'].value_counts()
             
             # Tampilkan diagram batang proporsi potabilitas
-            #st.subheader("Proporsi Potabilitas")
-            plt.figure(figsize=(8, 6))
-            sns.barplot(x=potabilitas_counts.index, y=potabilitas_counts.values)
-            plt.xlabel('Potabilitas')
-            plt.ylabel('Count')
-            #plt.title('Proporsi Potabilitas')
-            st.pyplot(plt)
-
-            colors = ['blue', '#f63366']  # Daftar warna dengan panjang 2
+            colors = ['#336B87', '#f63366']  # Daftar warna dengan panjang 2
             plt.figure(figsize=(8, 6))
             sns.barplot(x=potabilitas_counts.index, y=potabilitas_counts.values, palette=colors)  # Menggunakan daftar warna
             plt.xlabel('Potabilitas')
