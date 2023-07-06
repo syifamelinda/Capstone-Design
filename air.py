@@ -564,34 +564,34 @@ if selected == "Beranda":
                 # Proses hasil klasifikasi di sini
                 # Proses hasil klasifikasi di sini
                 st.subheader("Hasil Klasifikasi")
-                
+            
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df['Potabilitas'] = np.where(df['Potabilitas'] == 'Air Layak Minum', 1, 0)
-                
+            
                 # Menghitung jumlah kelayakan
                 class_counts = df['Potabilitas'].value_counts()
-                
+            
                 # Membuat label untuk grafik batang
                 labels = ['Tidak Layak', 'Layak']
-                
+            
                 # Filter dataframe berdasarkan hasil klasifikasi
-                df_filtered = df[df['Potabilitas'] == 1] if class_counts[1] > 0 else df[df['Potabilitas'] == 0]
-                
+                df_filtered = df[df['Potabilitas'] == 1] if 1 in class_counts.index else df[df['Potabilitas'] == 0]
+            
                 # Menghitung jumlah kelayakan yang sesuai dengan hasil klasifikasi
                 class_counts_filtered = df_filtered['Potabilitas'].value_counts()
-                
+            
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
                 ax.bar(labels, class_counts_filtered, color=colors)
-                
+            
                 ax.set_xlabel('Kelayakan')
                 ax.set_ylabel('Jumlah')
                 ax.set_title('Hasil Klasifikasi')
                 st.pyplot(fig)
-                
+            
                 # Tampilkan keseluruhan dataset dengan label Potabilitas
                 st.dataframe(df)
-                
+            
                 # Tombol download
                 def download_csv():
                     csv = df.to_csv(index=False)
