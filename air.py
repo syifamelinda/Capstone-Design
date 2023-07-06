@@ -423,12 +423,13 @@ if selected == "Beranda":
                 float(Rasa) == 1 and
                 float(TDS) <= 500
             )
-        
             # Update 'Potabilitas' value based on is_within_limits
             if is_within_limits:
                 potabilitas_value = 1 if air_diagnosis == 'Air Layak Minum' else 0
+                st.success(air_diagnosis)
             else:
                 potabilitas_value = 0
+                st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
         
             # Create a dictionary with the input data and prediction result
             result = {
