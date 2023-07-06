@@ -563,8 +563,10 @@ if selected == "Beranda":
             df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
     
             # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
-            st.subheader("Hasil Klasifikasi")
+            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
+            st.markdown("<h2 style='text-align: center;'>Hasil Klasifikasi</h2>", unsafe_allow_html=True)
             st.dataframe(df)
+
 
             # Hitung proporsi potabilitas
             potabilitas_counts = df['Potabilitas'].value_counts()
