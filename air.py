@@ -429,7 +429,7 @@ if selected == "Beranda":
                 st.success(air_diagnosis)
             else:
                 potabilitas_value = 0
-                st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
+                st.warning("Data Air Minum yang Anda Masukkan Berada Diluar Baku Mutu Kualitas Air, Air Tidak Layak Minum.")
         
             # Create a dictionary with the input data and prediction result
             result = {
