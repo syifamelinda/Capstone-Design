@@ -570,7 +570,7 @@ if selected == "Beranda":
             potabilitas_counts = df['Potabilitas'].value_counts()
             
             # Tampilkan diagram batang proporsi potabilitas
-            st.subheader("Proporsi Potabilitas")
+            #st.subheader("Proporsi Potabilitas")
             plt.figure(figsize=(8, 6))
             sns.barplot(x=potabilitas_counts.index, y=potabilitas_counts.values)
             plt.xlabel('Potabilitas')
