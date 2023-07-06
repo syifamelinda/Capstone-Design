@@ -583,10 +583,11 @@ if selected == "Beranda":
             def download_csv():
                 csv = df.to_csv(index=False)
                 b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
-                href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
+                href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer; position: fixed; top: 10px; right: 10px;">Download Hasil Klasifikasi</button></a>'
                 st.markdown(href, unsafe_allow_html=True)
-    
+            
             download_csv()
+
 
         
     
