@@ -505,8 +505,7 @@ if selected == "Beranda":
 
 
     elif input_option == "Upload File":
-        # Membaca file CSV yang diunggah
-        # Membaca file CSV yang diunggah
+        # Membaca file CSV yang diunggah# Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
     
         if uploaded_file is not None:
@@ -554,22 +553,6 @@ if selected == "Beranda":
             # Tampilkan hasil klasifikasi dengan kolom Potabilitas
             st.dataframe(df)
     
-            # Tampilkan grafik batang berdasarkan hasil klasifikasi
-            class_counts = df['Potabilitas'].value_counts()
-            labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
-            colors = ['#f63366', '#336B87']
-            
-            # Filter dataframe berdasarkan hasil klasifikasi
-            df_filtered = df[df['Potabilitas'] == 'Air Layak Minum'] if 'Air Layak Minum' in class_counts.index else df[df['Potabilitas'] == 'Air Tidak Layak Minum']
-            class_counts_filtered = df_filtered['Potabilitas'].value_counts()
-    
-            fig, ax = plt.subplots()
-            ax.bar(labels, class_counts_filtered.values, color=colors)
-            ax.set_xlabel('Kelayakan')
-            ax.set_ylabel('Jumlah')
-            ax.set_title('Hasil Klasifikasi')
-            st.pyplot(fig)
-    
             # Simpan hasil klasifikasi ke file CSV
             df.to_csv('hasil_klasifikasi.csv', index=False)
     
@@ -603,7 +586,7 @@ if selected == "Beranda":
             # Display the download button
             st.markdown(button_style, unsafe_allow_html=True)
             st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
-    
+        
     
     
     
