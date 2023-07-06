@@ -506,6 +506,7 @@ if selected == "Beranda":
 
     elif input_option == "Upload File":
         # Membaca file CSV yang diunggah
+        # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
     
         if uploaded_file is not None:
@@ -544,9 +545,6 @@ if selected == "Beranda":
             # Prediksi label untuk data yang baru diunggah
             y_pred = model.predict(X)
     
-            # Tampilkan dataset setelah preprocessing
-            st.write(df)
-    
             # Mengubah hasil prediksi menjadi label Potabilitas
             potabilitas_pred = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
     
@@ -560,8 +558,13 @@ if selected == "Beranda":
             class_counts = df['Potabilitas'].value_counts()
             labels = ['Air Tidak Layak Minum', 'Air Layak Minum']
             colors = ['#f63366', '#336B87']
+            
+            # Filter dataframe berdasarkan hasil klasifikasi
+            df_filtered = df[df['Potabilitas'] == 'Air Layak Minum'] if 'Air Layak Minum' in class_counts.index else df[df['Potabilitas'] == 'Air Tidak Layak Minum']
+            class_counts_filtered = df_filtered['Potabilitas'].value_counts()
+    
             fig, ax = plt.subplots()
-            ax.bar(labels, class_counts, color=colors)
+            ax.bar(labels, class_counts_filtered.values, color=colors)
             ax.set_xlabel('Kelayakan')
             ax.set_ylabel('Jumlah')
             ax.set_title('Hasil Klasifikasi')
@@ -571,7 +574,7 @@ if selected == "Beranda":
             df.to_csv('hasil_klasifikasi.csv', index=False)
     
             # Buat tombol download
-            button_id = str(time.time())  # Unique ID for the button
+            button_id = str(time.time())  #Unique ID for the button
             button_label = 'Download Hasil Klasifikasi'
     
             # Generate CSV file and get its content as base64
@@ -600,7 +603,6 @@ if selected == "Beranda":
             # Display the download button
             st.markdown(button_style, unsafe_allow_html=True)
             st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
-    
     
     
     
