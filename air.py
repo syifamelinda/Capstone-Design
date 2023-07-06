@@ -579,7 +579,10 @@ if selected == "Beranda":
             
                 # Menghitung jumlah kelayakan yang sesuai dengan hasil klasifikasi
                 class_counts_filtered = df_filtered['Potabilitas'].value_counts()
-            
+
+                # Definisi warna untuk setiap bar
+                colors = ['#336B87', '#f63366']
+                
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
                 ax.bar(labels, class_counts_filtered, color=colors)
