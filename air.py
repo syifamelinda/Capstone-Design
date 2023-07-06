@@ -562,7 +562,6 @@ if selected == "Beranda":
 
             if "Hasil Klasifikasi" in option:
                 # Proses hasil klasifikasi di sini
-                # Proses hasil klasifikasi di sini
                 st.subheader("Hasil Klasifikasi")
                 
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
@@ -571,10 +570,14 @@ if selected == "Beranda":
                 # Menghitung jumlah kelayakan
                 class_counts = df['Potabilitas'].value_counts()
                 
+                # Membuat label untuk grafik batang
+                labels = ['Tidak Layak', 'Layak']
+                
+                # Atur warna untuk setiap bar
+                colors = ['#336B87', '#f63366']
+                
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
-                labels = ['0 = Tidak Layak', '1 = Layak']
-                colors = ['#336B87', '#f63366']
                 ax.bar(labels, class_counts, color=colors)
                 
                 ax.set_xlabel('Kelayakan')
