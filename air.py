@@ -519,7 +519,7 @@ if selected == "Beranda":
             # Label Encoder untuk kolom Rasa dan Bau
             label_encoder = LabelEncoder()
             df['Rasa '] = label_encoder.fit_transform(df['Rasa '])
-            df['Bau'] = label_encoder.fit_transform(df['Bau'])
+            df['Bau'] = label_encoder.transform(df['Bau'])
     
             # Drop kolom BOD5, COD, dan Suhu
             df = df.drop(['BOD5', 'COD', 'Suhu'], axis=1)
