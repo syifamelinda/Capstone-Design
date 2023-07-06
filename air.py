@@ -562,6 +562,7 @@ if selected == "Beranda":
 
             if "Hasil Klasifikasi" in option:
                 # Proses hasil klasifikasi di sini
+                # Proses hasil klasifikasi di sini
                 st.subheader("Hasil Klasifikasi")
                 
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
@@ -573,12 +574,15 @@ if selected == "Beranda":
                 # Membuat label untuk grafik batang
                 labels = ['Tidak Layak', 'Layak']
                 
-                # Atur warna untuk setiap bar
-                colors = ['#336B87', '#f63366']
+                # Filter dataframe berdasarkan hasil klasifikasi
+                df_filtered = df[df['Potabilitas'] == 1] if class_counts[1] > 0 else df[df['Potabilitas'] == 0]
+                
+                # Menghitung jumlah kelayakan yang sesuai dengan hasil klasifikasi
+                class_counts_filtered = df_filtered['Potabilitas'].value_counts()
                 
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
-                ax.bar(labels, class_counts, color=colors)
+                ax.bar(labels, class_counts_filtered, color=colors)
                 
                 ax.set_xlabel('Kelayakan')
                 ax.set_ylabel('Jumlah')
@@ -594,7 +598,6 @@ if selected == "Beranda":
                     b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
                     href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
                     st.markdown(href, unsafe_allow_html=True)
-
 
 
 
