@@ -567,12 +567,14 @@ if selected == "Beranda":
 
             if "Hasil Klasifikasi" in option:
                 # Proses hasil klasifikasi di sini
-                # Proses hasil klasifikasi di sini 
                 st.subheader("Hasil Klasifikasi")
             
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df['Potabilitas'] = np.where(df['Potabilitas'] == 'Air Layak Minum', 1, 0)
-            
+
+                # Tampilkan keseluruhan dataset dengan label Potabilitas
+                st.dataframe(df)
+                
                 # Menghitung jumlah kelayakan
                 class_counts = df['Potabilitas'].value_counts()
             
@@ -598,7 +600,7 @@ if selected == "Beranda":
                 st.pyplot(fig)
             
                 # Tampilkan keseluruhan dataset dengan label Potabilitas
-                st.dataframe(df)
+                #st.dataframe(df)
             
                 # Tombol download
                 def download_csv():
