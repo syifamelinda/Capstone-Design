@@ -579,14 +579,6 @@ if selected == "Beranda":
             plt.ylabel('Count')
             #plt.title('Proporsi Potabilitas')
             st.pyplot(plt)
-
-            # Hitung Classification Report
-            classification_report = classification_report(y, y_pred)
-            
-            # Tampilkan Classification Report
-            st.subheader("Classification Report")
-            st.text(classification_report)
-
     
             # Tombol download
             def download_csv():
