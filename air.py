@@ -380,11 +380,11 @@ if selected == "Beranda":
                 input_data = [float(value) if isinstance(value, str) else value for value in input_data]
         
                 # Perform scaling on the input data
-                scaler = StandardScaler()
-                input_data_scaled = scaler.fit_transform([input_data])
+                #scaler = StandardScaler()
+                #input_data_scaled = scaler.fit_transform([input_data])
         
                 # Make predictions
-                air_prediction = model_data.predict(input_data_scaled)
+                air_prediction = model_data.predict(input_data)
         
                 if air_prediction[0] == 0:
                     air_diagnosis = 'Air Layak Minum'
