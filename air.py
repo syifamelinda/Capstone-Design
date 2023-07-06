@@ -575,7 +575,7 @@ if selected == "Beranda":
             sns.barplot(x=potabilitas_counts.index, y=potabilitas_counts.values)
             plt.xlabel('Potabilitas')
             plt.ylabel('Count')
-            plt.title('Proporsi Potabilitas')
+            #plt.title('Proporsi Potabilitas')
             st.pyplot(plt)
     
             # Tombol download
