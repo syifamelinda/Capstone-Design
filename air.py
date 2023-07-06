@@ -516,21 +516,6 @@ if selected == "Beranda":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     elif input_option == "Upload File":
         # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
@@ -580,6 +565,18 @@ if selected == "Beranda":
             # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
             st.subheader("Hasil Klasifikasi")
             st.dataframe(df)
+
+            # Hitung proporsi potabilitas
+            potabilitas_counts = df['Potabilitas'].value_counts()
+            
+            # Tampilkan diagram batang proporsi potabilitas
+            st.subheader("Proporsi Potabilitas")
+            plt.figure(figsize=(8, 6))
+            sns.barplot(x=potabilitas_counts.index, y=potabilitas_counts.values)
+            plt.xlabel('Potabilitas')
+            plt.ylabel('Count')
+            plt.title('Proporsi Potabilitas')
+            st.pyplot(plt)
     
             # Tombol download
             def download_csv():
