@@ -333,9 +333,9 @@ if selected == "Beranda":
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
         
-                st.success(air_diagnosis)
+                #st.success(air_diagnosis)
                 # ...
-                pass
+                #pass
             
             elif selected_method == "K-Nearest Neighbor":
                 with open("K-Nearest Neighbors.sav", 'rb') as file:
@@ -361,9 +361,9 @@ if selected == "Beranda":
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
         
-                st.success(air_diagnosis)
+                #st.success(air_diagnosis)
                 # ...
-                pass
+                #pass
         
             elif selected_method == "Extreme Learning Machine":
                 import pickle
@@ -391,11 +391,43 @@ if selected == "Beranda":
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
                 
-                st.success(air_diagnosis)
+                #st.success(air_diagnosis)
                 # ...
-                pass
+                #pass
             
+            # Check if input values are within the specified limits
+            is_within_limits = (
+                0 <= EColli <= 0.0 and
+                0 <= Coliform <= 0.0 and
+                0 <= Arsen <= 0.01 and
+                0 <= Kromium <= 0.05 and
+                0 <= Kadmium <= 0.003 and
+                0 <= Nitrat <= 50 and
+                0 <= Nitrit <= 3 and
+                0 <= Sianida <= 0.07 and
+                0 <= Selenium <= 0.01 and
+                0 <= Alumunium <= 0.2 and
+                0 <= Besi <= 0.3 and
+                0 <= Kesadahan <= 500 and
+                0 <= Klorida <= 250 and
+                0 <= Mangan <= 0.4 and
+                6.5 <= pH <= 8.5 and
+                0 <= Seng <= 3 and
+                0 <= Sulfat <= 250 and
+                0 <= Tembaga <= 2 and
+                0 <= Amonia <= 1.5 and
+                0.2 <= Chlor <= 1.0 and
+                Bau == 1 and
+                0 <= Warna <= 15 and
+                0 <= Kekeruhan <= 5 and
+                Rasa == 1 and
+                TDS <= 500
+            )
         
+            if is_within_limits:
+                st.success(air_diagnosis)
+    else:
+        st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
             # Create a dictionary with the input data and prediction result
             result = {
                 'EColli': EColli,
