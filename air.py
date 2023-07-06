@@ -562,18 +562,18 @@ if selected == "Beranda":
 
             if "Hasil Klasifikasi" in option:
                 # Proses hasil klasifikasi di sini
+                # Proses hasil klasifikasi di sini
                 st.subheader("Hasil Klasifikasi")
-                df_pred = pd.DataFrame({'Kelayakan': y_pred})
                 
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df['Potabilitas'] = np.where(df['Potabilitas'] == 'Air Layak Minum', 1, 0)
                 
+                # Menghitung jumlah kelayakan
+                class_counts = df['Potabilitas'].value_counts()
+                
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
-                class_counts = df['Potabilitas'].value_counts()
                 labels = ['0 = Tidak Layak', '1 = Layak']
-                
-                # Atur warna untuk setiap bar
                 colors = ['#336B87', '#f63366']
                 ax.bar(labels, class_counts, color=colors)
                 
