@@ -386,7 +386,7 @@ if selected == "Beranda":
                 # Make predictions
                 air_prediction = model_data.predict(input_data_scaled)
         
-                if air_prediction[1] == 1:
+                if air_prediction[0] == 0:
                     air_diagnosis = 'Air Layak Minum'
                 else:
                     air_diagnosis = 'Air Tidak Layak Minum'
