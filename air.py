@@ -564,36 +564,34 @@ if selected == "Beranda":
                 # Proses hasil klasifikasi di sini
                 st.subheader("Hasil Klasifikasi")
                 df_pred = pd.DataFrame({'Kelayakan': y_pred})
-            
-                # Tambahkan kolom 'Potabilitas' ke dataframe df
-                df['Potabilitas'] = y_pred
-            
+                
                 # Ubah nilai pada kolom 'Potabilitas' menjadi 0 atau 1
                 df['Potabilitas'] = np.where(df['Potabilitas'] == 'Air Layak Minum', 1, 0)
-            
+                
                 # Tampilkan grafik batang
                 fig, ax = plt.subplots()
-                class_counts = np.bincount(y_pred)
+                class_counts = df['Potabilitas'].value_counts()
                 labels = ['0 = Tidak Layak', '1 = Layak']
-            
+                
                 # Atur warna untuk setiap bar
                 colors = ['#336B87', '#f63366']
                 ax.bar(labels, class_counts, color=colors)
-            
+                
                 ax.set_xlabel('Kelayakan')
                 ax.set_ylabel('Jumlah')
                 ax.set_title('Hasil Klasifikasi')
                 st.pyplot(fig)
-            
+                
                 # Tampilkan keseluruhan dataset dengan label Potabilitas
                 st.dataframe(df)
-
+                
                 # Tombol download
                 def download_csv():
                     csv = df.to_csv(index=False)
                     b64 = base64.b64encode(csv.encode()).decode()  # Encode ke base64
                     href = f'<a href="data:file/csv;base64,{b64}" download="hasil_klasifikasi.csv"><button style="padding: 0.5rem 1rem; background-color: #f63366; color: white; border: none; border-radius: 4px; cursor: pointer;">Download Hasil Klasifikasi</button></a>'
                     st.markdown(href, unsafe_allow_html=True)
+
 
 
 
