@@ -423,11 +423,14 @@ if selected == "Beranda":
                 float(Rasa) == 1 and
                 float(TDS) <= 500
             )
+        
+            # Update 'Potabilitas' value based on is_within_limits
             if is_within_limits:
-                st.success(air_diagnosis)
+                potabilitas_value = 1 if air_diagnosis == 'Air Layak Minum' else 0
             else:
-                st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
-                    # Create a dictionary with the input data and prediction result
+                potabilitas_value = 0
+        
+            # Create a dictionary with the input data and prediction result
             result = {
                 'EColli': EColli,
                 'Coliform': Coliform,
@@ -452,16 +455,10 @@ if selected == "Beranda":
                 'Bau': Bau,
                 'Warna': Warna,
                 'Kekeruhan': Kekeruhan,
-                'Rasa': Rasa,
+                'Rasa':Rasa,
                 'TDS': TDS,
+                'Potabilitas': potabilitas_value  # Updated 'Potabilitas' value
             }
-            
-            # Add 'Potabilitas' key to the result dictionary if needed
-            if selected_method in ["Decision Tree", "K-Nearest Neighbor", "Extreme Learning Machine"]:
-                if air_diagnosis == 'Air Layak Minum':
-                    result['Potabilitas'] = 1
-                else:
-                    result['Potabilitas'] = 0
             
             # Create a dataframe from the result dictionary
             df_result = pd.DataFrame([result])
@@ -511,8 +508,6 @@ if selected == "Beranda":
             # Display the download button
             st.markdown(button_style, unsafe_allow_html=True)
             st.markdown(f'<a href="data:file/csv;base64,{b64}" download="hasil_prediksi.csv"><button class="download-button">{button_label}</button></a>', unsafe_allow_html=True)
-
-
 
 
 
