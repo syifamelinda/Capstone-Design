@@ -426,9 +426,9 @@ if selected == "Beranda":
         
             if is_within_limits:
                 st.success(air_diagnosis)
-    else:
-        st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
-            # Create a dictionary with the input data and prediction result
+            else:
+                st.warning("Nilai input berada di luar batas yang ditentukan, air tidak layak minum.")
+                    # Create a dictionary with the input data and prediction result
             result = {
                 'EColli': EColli,
                 'Coliform': Coliform,
