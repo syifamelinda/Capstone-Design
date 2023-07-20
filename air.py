@@ -42,7 +42,7 @@ from sklearn.metrics import ConfusionMatrixDisplay
 
 # Create sidebar with dropdown menu
 with st.sidebar:
-    selected = option_menu("", ["Beranda", "Informasi", "Credits"])
+    selected = option_menu("", ["Beranda", "Informasi", "Credits", "Panduan Pengguna"])
 
 # Display selected page
 if selected == "Beranda":
