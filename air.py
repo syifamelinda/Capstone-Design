@@ -71,14 +71,12 @@ if selected == "Beranda":
         unsafe_allow_html=True
     )
 
-   st.markdown(
-        "[**Masukkan data kandungan air minum anda, untuk mengetahui kelayakannya!**](#data-air-minum)\n"
-        "Sebelumnya silahkan membaca buku panduannya terlebih dahulu [disini]"
-        "(https://drive.google.com/drive/folders/1LvNsC55XPSoXlDhV0L36W8pM2YjZvEBb?usp=sharing).\n"
-        "<hr style='border: 1px solid black;'><br>",
+  # Tampilkan keterangan tambahan
+    st.markdown(
+        "<center>Masukkan data kandungan air minum anda, untuk mengetahui kelayakannya!</center>"
+         "<center>Sebelumnya silahkan membaca buku panduannya terlebih dahulu disini!</center><hr style='border: 1px solid black;'><br>",
         unsafe_allow_html=True
-   )
-
+    )
     
 
     class elm():
