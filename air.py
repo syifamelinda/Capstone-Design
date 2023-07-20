@@ -71,12 +71,17 @@ if selected == "Beranda":
         unsafe_allow_html=True
     )
 
-    # Tampilkan keterangan tambahan
+   # Teks untuk hyperlink
+    text1 = "Masukkan data kandungan air minum anda, untuk mengetahui kelayakannya!"
+    text2 = "Sebelumnya silahkan membaca buku panduannya terlebih dahulu [disini](https://drive.google.com/drive/folders/1LvNsC55XPSoXlDhV0L36W8pM2YjZvEBb?usp=sharing)."
+    
+    # Tampilkan teks dengan hyperlink
     st.markdown(
-        "<center>Masukkan data kandungan air minum anda, untuk mengetahui kelayakannya!</center>"
-         "<center>Masukkan data kandungan air minum anda, untuk mengetahui kelayakannya!</center><hr style='border: 1px solid black;'><br>",
+        f"<center>[**{text1}**](#data-air-minum)</center>"
+        f"<center>{text2}</center><hr style='border: 1px solid black;'><br>",
         unsafe_allow_html=True
     )
+
     
 
     class elm():
