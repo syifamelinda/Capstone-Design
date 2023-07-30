@@ -209,8 +209,8 @@ if selected == "Beranda":
         col1, col2, col3, col4, col5 = st.columns(5)
 
         with col1:
-            EColli = st.text_input('E.Colli', key='E.Colli')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            EColli = st.text_input('E.Colli', key='E.Colli', value='', type='password', placeholder='Masukkan nilai E.Colli...')
+            st.markdown('<style>.stTextInput input[type="text"]::placeholder { color: #c3c3c3; }</style>', unsafe_allow_html=True)
 
         with col2:
             Coliform = st.text_input('Coliform', key='Coliform')
