@@ -211,16 +211,12 @@ if selected == "Beranda":
             .stTextInput input {
                 background-color: #7ab8bf;
                 color: transparent;
-                caret-color: black;
             }
             ::placeholder {
                 color: transparent;
             }
-            :-ms-input-placeholder {
-                color: transparent;
-            }
-            ::-ms-input-placeholder {
-                color: transparent;
+            .stTextInput input:focus {
+                color: black;
             }
             </style>
             """,
