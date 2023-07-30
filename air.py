@@ -271,19 +271,19 @@ if selected == "Beranda":
 
         with col1:
             Seng = st.text_input('Seng', key='Seng', value='', placeholder='0 jml/100 mL')
-           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
             Sulfat = st.text_input('Sulfat', key='Sulfat', value='', placeholder='0 jml/100 mL')
-           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
             Tembaga = st.text_input('Tembaga', key='Tembaga', value='', placeholder='0 jml/100 mL')
-           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
             Amonia = st.text_input('Amonia', key='Amonia', value='', placeholder='0 jml/100 mL')
-           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
             Chlor = st.text_input('Chlor', key='Chlor', value='', placeholder='0 jml/100 mL')
@@ -295,7 +295,7 @@ if selected == "Beranda":
 
         with col2:
             Warna = st.text_input('Warna', key='Warna, value='', placeholder='0 jml/100 mL')
-           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
             Kekeruhan = st.text_input('Kekeruhan', key='Kekeruhan', value='', placeholder='0 jml/100 mL')
@@ -303,11 +303,11 @@ if selected == "Beranda":
 
         with col4:
             Rasa = st.text_input('Rasa ', key='Rasa ', value='', placeholder='0 jml/100 mL')
-          st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
             TDS = st.text_input('TDS', key='TDS', value='', placeholder='0 jml/100 mL')
-          st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         if st.button('Cek Kelayakan'):
             # Perform prediction based on the selected method
