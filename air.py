@@ -42,7 +42,7 @@ from sklearn.metrics import ConfusionMatrixDisplay
 
 # Create sidebar with dropdown menu
 with st.sidebar:
-    selected = option_menu("", ["Beranda", "Informasi", "Credits"])
+    selected = option_menu("", ["Beranda", "Informasi", "Credits", "Buku Panduan"])
 
 # Display selected page
 if selected == "Beranda":
@@ -2055,6 +2055,22 @@ if selected == "Credits":
         # membuat div untuk caption
         caption_div = st.empty()
         caption_div.markdown('**IG. Prasetya Dwi Wibawa, S.T., M.T.**<br><p style="margin-top:-10px;">Pembimbing 2</p>', unsafe_allow_html=True)
+
+if selected == "Buku Panduan":
+    # Judul
+    st.markdown('''
+    <div style="text-align: center;">
+        <h1 style="font-size: 36px;">About Us.</h1>
+    </div>
+    <div style="text-align: justify;">
+        <p>Website kualitas air minum bertujuan untuk memberikan informasi mengenai kualitas air minum di suatu wilayah atau tempat, sehingga masyarakat dapat mengetahui apakah air minum yang mereka konsumsi sudah memenuhi standar kesehatan atau tidak. Hal ini penting dilakukan untuk menjaga kesehatan dan mencegah terjadinya penyakit yang disebabkan oleh air minum yang tidak layak konsumsi.</p>
+        <p>Namun tidak hanya itu, di dalam website ini juga terdapat informasi terkait Peraturan Menteri Kesehatan (Permenkes), resiko penyakit yang dapat ditimbulkan akibat konsumsi air yang tidak layak, serta informasi tentang algoritma machine learning yang digunakan untuk mengolah data pengujian air.</p>
+    </div>
+    <div>
+    <h1 style="font-size: 36px;">Team</h1>
+    <hr style="width: 100%; border-style: solid; border-width: 2px; margin-top: 5px; margin-bottom: 10px;">
+    </div>
+    ''', unsafe_allow_html=True)
         
         
         
