@@ -266,7 +266,7 @@ if selected == "Beranda":
             st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
-            pH = st.text_input('PH', key='Mangan',  value='', placeholder='0 jml/100 mL')
+            pH = st.text_input('PH', key='pH',  value='', placeholder='0 jml/100 mL')
             st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col1:
