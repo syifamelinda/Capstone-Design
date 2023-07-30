@@ -210,61 +210,60 @@ if selected == "Beranda":
         
 
         with col1:
-            st.container()  # Membuat wadah untuk mengatur gaya elemen berikutnya
             EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
             st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
-            Coliform = st.text_input('Coliform', key='Coliform')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Coliform = st.text_input('Coliform', key='Coliform', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
-            Arsen = st.text_input('Arsen', key='Arsen')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Arsen = st.text_input('Arsen', key='Arsen', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
-            Kromium = st.text_input('Kromium', key='Kromium')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
-
+            Kromium = st.text_input('Kromium', key='Kromium', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
+            
         with col5:
-            Kadmium = st.text_input('Kadmium', key='Kadmium ')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Kadmium = st.text_input('Kadmium', key='Kadmium', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col1:
-            Nitrit = st.text_input('Nitrit', key='Nitrit')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Nitrit = st.text_input('Nitrit', key='Nitrit', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
-            Nitrat = st.text_input('Nitrat', key='Nitrat')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Nitrat = st.text_input('Nitrat', key='Nitrat', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
-            Sianida = st.text_input('Sianida', key='Sianida')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Sianida = st.text_input('Sianida', key='Sianida', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
-            Selenium = st.text_input('Selenium', key='Selenium')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Selenium = st.text_input('Selenium', key='Selenium', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
-            Alumunium = st.text_input('Alumunium', key='Alumunium')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Alumunium = st.text_input('Alumunium', key='Alumunium', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col1:
-            Besi = st.text_input('Besi', key='Besi')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Besi = st.text_input('Besi', key='Besi', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
-            Kesadahan = st.text_input('Kesadahan', key='Kesadahan')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Kesadahan = st.text_input('Kesadahan', key='Kesadahan', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
-            Klorida = st.text_input('Klorida', key='Klorida')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Klorida = st.text_input('Klorida', key='Klorida', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
-            Mangan = st.text_input('Mangan', key='Mangan')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Mangan = st.text_input('Mangan', key='Mangan',  value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
             pH = st.text_input('pH', key='pH')
