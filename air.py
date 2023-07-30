@@ -266,48 +266,48 @@ if selected == "Beranda":
             st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
-            pH = st.text_input('pH', key='pH')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            pH = st.text_input('pH', key='pH', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col1:
-            Seng = st.text_input('Seng', key='Seng')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Seng = st.text_input('Seng', key='Seng', value='', placeholder='0 jml/100 mL')
+           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
-            Sulfat = st.text_input('Sulfat', key='Sulfat')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Sulfat = st.text_input('Sulfat', key='Sulfat', value='', placeholder='0 jml/100 mL')
+           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
-            Tembaga = st.text_input('Tembaga', key='Tembaga')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Tembaga = st.text_input('Tembaga', key='Tembaga', value='', placeholder='0 jml/100 mL')
+           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
-            Amonia = st.text_input('Amonia', key='Amonia')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Amonia = st.text_input('Amonia', key='Amonia', value='', placeholder='0 jml/100 mL')
+           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
-            Chlor = st.text_input('Chlor', key='Chlor')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Chlor = st.text_input('Chlor', key='Chlor', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col1:
-            Bau = st.text_input('Bau', key='Bau')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Bau = st.text_input('Bau', key='Bau', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
-            Warna = st.text_input('Warna', key='Warna')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Warna = st.text_input('Warna', key='Warna', value='', placeholder='0 jml/100 mL')
+           st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col3:
-            Kekeruhan = st.text_input('Kekeruhan', key='Kekeruhan')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Kekeruhan = st.text_input('Kekeruhan', key='Kekeruhan', value='', placeholder='0 jml/100 mL')
+            st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col4:
-            Rasa = st.text_input('Rasa ', key='Rasa ')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            Rasa = st.text_input('Rasa ', key='Rasa ', value='', placeholder='0 jml/100 mL')
+          st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         with col5:
-            TDS = st.text_input('TDS', key='TDS')
-            st.markdown('<style>.stTextInput input[type="text"] { background-color: #538cc6; }</style>', unsafe_allow_html=True)
+            TDS = st.text_input('TDS', key='TDS', value='', placeholder='0 jml/100 mL')
+          st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
         
         if st.button('Cek Kelayakan'):
             # Perform prediction based on the selected method
