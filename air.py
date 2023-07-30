@@ -210,7 +210,7 @@ if selected == "Beranda":
 
         with col1:
             EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
-            st.markdown('<style>.stTextInput input[type="text"]::placeholder { color: #c3c3c3; }</style>', unsafe_allow_html=True)
+            st.markdown('<style>.stTextInput input[type="text"]::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
             Coliform = st.text_input('Coliform', key='Coliform')
