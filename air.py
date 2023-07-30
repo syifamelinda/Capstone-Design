@@ -210,7 +210,8 @@ if selected == "Beranda":
         
 
         with col1:
-            EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL, format="color: transparent; background-color: #7ab8bf;")
+            EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL', 
+                          format="color: transparent; background-color: #7ab8bf;")
             #st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
         with col2:
