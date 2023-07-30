@@ -211,7 +211,8 @@ if selected == "Beranda":
             """
             <style>
             .stTextInput input {
-                background-color: #f2f2f2;
+                background-color: transparent;
+                border: 1px solid #cccccc;
                 color: #000000;
             }
             .stTextInput input::placeholder {
@@ -223,7 +224,7 @@ if selected == "Beranda":
         )
 
         with col1:
-            EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
+             EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
 
         with col2:
             Coliform = st.text_input('Coliform', key='Coliform')
