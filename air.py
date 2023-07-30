@@ -207,6 +207,20 @@ if selected == "Beranda":
         
 
         col1, col2, col3, col4, col5 = st.columns(5)
+        st.markdown(
+            """
+            <style>
+            .stTextInput input {
+                background-color: #f2f2f2;
+                color: #000000;
+            }
+            .stTextInput input::placeholder {
+                color: #7ab8bf;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
 
         with col1:
             EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
