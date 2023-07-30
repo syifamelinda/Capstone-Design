@@ -210,7 +210,7 @@ if selected == "Beranda":
         
 
         with col1:
-            st.beta_container()  # Membuat wadah untuk mengatur gaya elemen berikutnya
+            st.container()  # Membuat wadah untuk mengatur gaya elemen berikutnya
             EColli = st.text_input('E.Colli', key='E.Colli', value='', placeholder='0 jml/100 mL')
             st.markdown('<style>.stTextInput input::placeholder { color: #7ab8bf; }</style>', unsafe_allow_html=True)
 
