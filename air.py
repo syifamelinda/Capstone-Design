@@ -574,6 +574,18 @@ if selected == "Beranda":
     
             # Prediksi label untuk data yang baru diunggah
             y_pred = model.predict(X)
+
+            from sklearn.metrics import accuracy_score
+
+            # Prediksi label untuk data yang baru diunggah
+            y_pred = model.predict(X)
+            
+            # Hitung akurasi model
+            accuracy = accuracy_score(y, y_pred)
+            
+            # Tampilkan akurasi
+            st.markdown(f"<h2 style='text-align: center;'>Akurasi Model: {accuracy:.2f}</h2>", unsafe_allow_html=True)
+
     
             # Tampilkan dataset setelah preprocessing
             st.write(df)
