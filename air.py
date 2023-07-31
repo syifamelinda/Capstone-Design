@@ -581,7 +581,7 @@ if selected == "Beranda":
             st.dataframe(df)
 
             # Prediksi label untuk data yang baru diunggah
-            y_pred = model.predict(X)
+            #y_pred = model.predict(X)
 
 
             # Hitung proporsi potabilitas
