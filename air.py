@@ -554,6 +554,9 @@ if selected == "Beranda":
             # Drop kolom BOD5, COD, dan Suhu
             df = df.drop(['BOD5', 'COD', 'Suhu'], axis=1)
     
+            # Drop rows with missing values in the target labels
+            df = df.dropna(subset=['Potabilitas'])
+    
             # Bagi data menjadi fitur (X) dan label (y)
             X = df.iloc[:, :-1]
             y = df.iloc[:, -1]
