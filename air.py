@@ -572,6 +572,17 @@ if selected == "Beranda":
             # Load model yang sudah disimpan sebelumnya
             model = joblib.load(model_file)
     
+            # Tampilkan dataset setelah preprocessing
+            st.write(df)
+    
+            # Tambahkan kolom "Potabilitas" ke data frame
+            df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
+    
+            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
+            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
+            st.markdown("<h2 style='text-align: center;'>Hasil Klasifikasi</h2>", unsafe_allow_html=True)
+            st.dataframe(df)
+
             # Prediksi label untuk data yang baru diunggah
             y_pred = model.predict(X)
 
@@ -585,18 +596,6 @@ if selected == "Beranda":
             
             # Tampilkan akurasi
             st.markdown(f"<h2 style='text-align: center;'>Akurasi Model: {accuracy:.2f}</h2>", unsafe_allow_html=True)
-
-    
-            # Tampilkan dataset setelah preprocessing
-            st.write(df)
-    
-            # Tambahkan kolom "Potabilitas" ke data frame
-            df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
-    
-            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
-            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
-            st.markdown("<h2 style='text-align: center;'>Hasil Klasifikasi</h2>", unsafe_allow_html=True)
-            st.dataframe(df)
 
 
             # Hitung proporsi potabilitas
