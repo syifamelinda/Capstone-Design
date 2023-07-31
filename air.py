@@ -532,10 +532,7 @@ if selected == "Beranda":
 
 
 
-
-
-
-    if input_option == "Upload File":
+    elif input_option == "Upload File":
         # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
     
@@ -553,9 +550,6 @@ if selected == "Beranda":
     
             # Drop kolom BOD5, COD, dan Suhu
             df = df.drop(['BOD5', 'COD', 'Suhu'], axis=1)
-    
-            # Drop rows with missing values in the target labels
-            df = df.dropna(subset=['Potabilitas'])
     
             # Bagi data menjadi fitur (X) dan label (y)
             X = df.iloc[:, :-1]
@@ -575,25 +569,24 @@ if selected == "Beranda":
             # Load model yang sudah disimpan sebelumnya
             model = joblib.load(model_file)
     
-            # Prediksi label untuk data yang baru diunggah
-            y_pred = model.predict(X)
+            # Tampilkan dataset setelah preprocessing
+            st.write(df)
     
             # Tambahkan kolom "Potabilitas" ke data frame
             df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
     
-            # Hitung akurasi model
-            accuracy = accuracy_score(y, y_pred)
-    
-            # Tampilkan akurasi
-            st.markdown(f"<h2 style='text-align: center;'>Akurasi Model: {accuracy:.2f}</h2>", unsafe_allow_html=True)
-    
+            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
             # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
             st.markdown("<h2 style='text-align: center;'>Hasil Klasifikasi</h2>", unsafe_allow_html=True)
             st.dataframe(df)
-    
+
+            # Prediksi label untuk data yang baru diunggah
+            y_pred = model.predict(X)
+
+
             # Hitung proporsi potabilitas
             potabilitas_counts = df['Potabilitas'].value_counts()
-    
+            
             # Tampilkan diagram batang proporsi potabilitas
             colors = ['#336B87', '#f63366']  # Daftar warna dengan panjang 2
             plt.figure(figsize=(8, 6))
