@@ -571,6 +571,7 @@ if selected == "Beranda":
     
             # Tampilkan dataset setelah preprocessing
             st.write(df)
+            y_pred = model.predict(X)
     
             # Tambahkan kolom "Potabilitas" ke data frame
             df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
