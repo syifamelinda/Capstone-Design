@@ -535,7 +535,7 @@ if selected == "Beranda":
 
 
 
-    elif input_option == "Upload File":
+    if input_option == "Upload File":
         # Membaca file CSV yang diunggah
         uploaded_file = st.file_uploader("Unggah file CSV", type="csv")
     
@@ -572,35 +572,25 @@ if selected == "Beranda":
             # Load model yang sudah disimpan sebelumnya
             model = joblib.load(model_file)
     
-            # Tampilkan dataset setelah preprocessing
-            st.write(df)
+            # Prediksi label untuk data yang baru diunggah
+            y_pred = model.predict(X)
     
             # Tambahkan kolom "Potabilitas" ke data frame
             df['Potabilitas'] = np.where(y_pred == 1, 'Air Layak Minum', 'Air Tidak Layak Minum')
     
-            # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
+            # Hitung akurasi model
+            accuracy = accuracy_score(y, y_pred)
+    
+            # Tampilkan akurasi
+            st.markdown(f"<h2 style='text-align: center;'>Akurasi Model: {accuracy:.2f}</h2>", unsafe_allow_html=True)
+    
             # Tampilkan hasil klasifikasi dengan kolom "Potabilitas"
             st.markdown("<h2 style='text-align: center;'>Hasil Klasifikasi</h2>", unsafe_allow_html=True)
             st.dataframe(df)
-
-            # Prediksi label untuk data yang baru diunggah
-            y_pred = model.predict(X)
-
-            from sklearn.metrics import accuracy_score
-
-            # Prediksi label untuk data yang baru diunggah
-            y_pred = model.predict(X)
-            
-            # Hitung akurasi model
-            accuracy = accuracy_score(y, y_pred)
-            
-            # Tampilkan akurasi
-            st.markdown(f"<h2 style='text-align: center;'>Akurasi Model: {accuracy:.2f}</h2>", unsafe_allow_html=True)
-
-
+    
             # Hitung proporsi potabilitas
             potabilitas_counts = df['Potabilitas'].value_counts()
-            
+    
             # Tampilkan diagram batang proporsi potabilitas
             colors = ['#336B87', '#f63366']  # Daftar warna dengan panjang 2
             plt.figure(figsize=(8, 6))
