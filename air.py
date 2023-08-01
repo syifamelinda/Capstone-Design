@@ -483,8 +483,8 @@ if selected == "Beranda":
             if not (0 <= float(Mangan) <= 0.4):
                 warnings.append("Mangan diluar batas (0 - 0.4)")
 
-            if not (6.5 <= float(Kadmium) <= 8.5):
-                warnings.append("Kadmium diluar batas (6.5 - 8.5)")
+            if not (6.5 <= float(pH) <= 8.5):
+                warnings.append("pH diluar batas (6.5 - 8.5)")
 
             if not (0 <= float(Seng) <= 3):
                 warnings.append("Seng diluar batas (0 - 3)")
