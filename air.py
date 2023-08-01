@@ -414,7 +414,7 @@ if selected == "Beranda":
                 # ...
                 #pass
             
-            # Check if input values are within the specified limits
+            # Periksa apakah nilai masukan berada dalam batas yang ditentukan
             is_within_limits = (
                 0 <= float(EColli) <= 0.0 and
                 0 <= float(Coliform) <= 0.0 and
@@ -442,13 +442,29 @@ if selected == "Beranda":
                 float(Rasa) == 1 and
                 float(TDS) <= 500
             )
-            # Update 'Potabilitas' value based on is_within_limits
+            
+            # Inisialisasi sebuah list untuk menyimpan pesan peringatan untuk parameter-parameter yang melebihi batasnya
+            warnings = []
+            
+            # Periksa masing-masing parameter secara terpisah dan buat pesan peringatan jika melebihi batasnya
+            if not (0 <= float(Arsen) <= 0.01):
+                warnings.append("Arsen diluar batas (0 - 0.01)")
+            
+            if not (0 <= float(Kromium) <= 0.05):
+                warnings.append("Kromium diluar batas (0 - 0.05)")
+            
+            # Tambahkan lebih banyak periksaan untuk parameter lainnya dengan cara yang sama
+            
+            # Perbarui nilai 'Potabilitas' berdasarkan is_within_limits
             if is_within_limits:
                 potabilitas_value = 1 if air_diagnosis == 'Air Layak Minum' else 0
                 st.success(air_diagnosis)
             else:
                 potabilitas_value = 0
                 st.warning("Data Air Minum yang Anda Masukkan Berada Diluar Baku Mutu Kualitas Air, Air Tidak Layak Minum.")
+                if warnings:
+                    st.warning(", ".join(warnings))
+
         
             # Create a dictionary with the input data and prediction result
             result = {
