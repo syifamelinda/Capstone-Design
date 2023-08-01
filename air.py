@@ -452,8 +452,66 @@ if selected == "Beranda":
             
             if not (0 <= float(Kromium) <= 0.05):
                 warnings.append("Kromium diluar batas (0 - 0.05)")
+
+            if not (0 <= float(Kadmium) <= 0.003):
+                warnings.append("Kadmium diluar batas (0 - 0.003)")
+
+            if not (0 <= float(Nitrat) <= 50):
+                warnings.append("Nitrat diluar batas (0 - 50)")
+
+            if not (0 <= float(Nitrit) <= 3):
+                warnings.append("Nitrit diluar batas (0 - 3)")
+
+            if not (0 <= float(Sianida) <= 0.07):
+                warnings.append("Sianida diluar batas (0 - 0.07)")
+
+            if not (0 <= float(Selenium) <= 0.01):
+                warnings.append("Selenium diluar batas (0 - 0.01)")
+
+            if not (0 <= float(Alumunium) <= 0.2):
+                warnings.append("Alumunium diluar batas (0 - 0.2)")
+
+            if not (0 <= float(Besi) <= 0.3):
+                warnings.append("Besi diluar batas (0 - 0.3)")
+
+            if not (0 <= float(Kesadahan) <= 500):
+                warnings.append("Kesadahan diluar batas (0 - 500)")
+
+            if not (0 <= float(Klorida) <= 250):
+                warnings.append("Klorida diluar batas (0 - 250)")
+
+            if not (0 <= float(Mangan) <= 0.4):
+                warnings.append("Mangan diluar batas (0 - 0.4)")
+
+            if not (6.5 <= float(Kadmium) <= 8.5):
+                warnings.append("Kadmium diluar batas (6.5 - 8.5)")
+
+            if not (0 <= float(Seng) <= 3):
+                warnings.append("Seng diluar batas (0 - 3)")
+
+            if not (0 <= float(Sulfat) <= 250):
+                warnings.append("Sulfat diluar batas (0 - 250)")
+
+            if not (0 <= float(Tembaga) <= 2):
+                warnings.append("Tembaga diluar batas (0 - 2)")
+
+            if not (0 <= float(Amonia) <= 1.5):
+                warnings.append("Amonia diluar batas (0 - 1.5)")
+
+            if not (0.2 <= float(Chlor) <= 1.0):
+                warnings.append("Chlor diluar batas (0 - 1.0)")
+
+            if not (0 <= float(Warna) <= 15):
+                warnings.append("Warna diluar batas (0 - 15)")
+
+            if not (0 <= float(Kekeruhan) <= 5):
+                warnings.append("Kekeruhan diluar batas (0 - 5)")
+
+            if not (0 <= float(TDS) <= 500):
+                warnings.append("TDS diluar batas (0 - 500)")
+                
             
-            # Tambahkan lebih banyak periksaan untuk parameter lainnya dengan cara yang sama
+            
             
             # Perbarui nilai 'Potabilitas' berdasarkan is_within_limits
             if is_within_limits:
