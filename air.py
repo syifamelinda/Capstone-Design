@@ -210,7 +210,7 @@ if selected == "Beranda":
             <style>
             .stTextInput input {
                 background-color: #7ab8bf;
-                color: transparent;
+                #color: transparent;
             }
             ::placeholder {
                 color: transparent;
